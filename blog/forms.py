@@ -1,8 +1,11 @@
+'''Module for forms definition'''
 from django import forms
 from .models import Post
 
 class PostForm(forms.ModelForm):
+    '''class name'''
     class Meta:
+        '''class name'''
         model = Post
         fields = ('title','title_tag','author','body')
         widgets = {
@@ -13,7 +16,9 @@ class PostForm(forms.ModelForm):
         }
 
 class EditForm(forms.ModelForm):
+    '''class name'''
     class Meta:
+        '''class name'''
         model = Post
         fields = ('title','title_tag','body')
         widgets = {

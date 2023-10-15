@@ -3,15 +3,22 @@
 {% block title %} Delete a blog post {% endblock%}
 
 {% block content %}
+{% if user.is_authenticated %}
+    <h1>Delete a Blog Post</h1>
+    <h3>Delete a post {{ post.title }}</h3>
+    <div  class="form-group">
+    <form method="post">
+        {% csrf_token %}
+        <strong>Are you sure?</strong>
+        <button class="btn btn-danger">Delete</button>
+    </form>
+    </div>
 
-<h1>Delete a Blog Post</h1>
-<h3>Delete a post {{ post.title }}</h3>
-<div  class="form-group">
-<form method="post">
-    {% csrf_token %}
-    <strong>Are you sure?</strong>
-    <button class="btn btn-danger">Delete</button>
-</form>
-</div>
+
+{% else %}
+
+    <strong>You must have login to access</strong>
+    
+{% endif %}
 
 {%  endblock %}

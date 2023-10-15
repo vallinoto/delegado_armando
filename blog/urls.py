@@ -1,3 +1,4 @@
+"""Module providing a site definition URLs."""
 from django.urls import path
 from .views import HomeView, ArticleDetailView, AddPostView, UpdatePostView, DeletePostView
 
