@@ -1,7 +1,8 @@
 """Module providing a views."""
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Post
+from django.shortcuts import render
+from .models import Post, Category
 from .forms import PostForm, EditForm
 
 
@@ -31,6 +32,14 @@ class AddPostView(CreateView):
     template_name = 'add_post.html'
 
 
+class AddCategoryView(CreateView):
+    '''
+        Class name
+    '''
+    model = Category
+    template_name = 'add_category.html'
+    fields = '__all__'
+
 class UpdatePostView(UpdateView):
     '''
         Class name
@@ -48,3 +57,11 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
+
+
+def category_view(request,cats):
+    '''
+        def name
+    '''
+    category_posts = Post.objects.filter(category=cats)
+    return render(request,'categories.html', {'cats':cats, 'category_posts' : category_posts} )

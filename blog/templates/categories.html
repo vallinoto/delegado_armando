@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<h1>Posts in category {{ cats }}</h1>
+<ul>
+    {% for post in category_posts %}
+    <li><a href= "{% url 'article-detail' post.pk %}" >{{ post.title }} </a> | {{ post.author }} | {{ post.post_date }}
+        {% if user.is_authenticated %}
+            <small>
+                <a href="{% url 'update-post' post.pk %}"> (Edit)</a>
+                <a href="{% url 'delete-post' post.pk %}"> (Delete)</a>
+            </small></li>
+        {% else %}
+            </li>
+        {% endif %}
+        {{ post.body|slice:":20"}}
+        <br><br>
+    {% endfor %}
+</ul>
+{%  endblock %}
