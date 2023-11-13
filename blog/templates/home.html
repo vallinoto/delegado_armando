@@ -8,9 +8,9 @@
     {% for post in object_list %}
       <div class="col-md-4">
         <div class="card">
-          <img class="card-img-top" src="{{ post.imagem.url }}" alt="Imagem de capa do card">
+          <img class="card-img-top no-border w-50 mx-auto my-auto" style="border: none;" src="media/{{ post.header_image }}" alt="Imagem de capa do card">
           <div class="card-body">
-            <h5 class="card-title">{{ post.title|upper }}</h5>
+            <h5 class="card-title">{{ post.title|upper }} .... </h5>
             <p class="card-text">{{ post.body|slice:":90"|safe }}...</p>
             <p class="card-text"><small class="text-muted">Criado em {{ post.post_date|date:"d/M/Y"  }}</small></p>
             <small><p class="card-text"><a href= "{% url 'article-detail' post.pk %}" >Continuar lendo</a></p></small>
