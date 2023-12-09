@@ -5,12 +5,10 @@
 ## Membros
 
 * Identidade Maçônica:
-    * Grau:
-    * Data de Iniciação
-    * Data de Elevação
-    * Data de Exautação
-    * Data de Instalação
     * Matrícula
+    * Dados filhos
+    * Dados cunhadas
+    * Editar informações
 
 ## Docência
 
