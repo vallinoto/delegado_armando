@@ -1,5 +1,5 @@
 {% extends 'base.html'%}
-
+{% load static %}
 {% block content %}
 
 <h1>Posts</h1>
@@ -8,8 +8,13 @@
     {% for post in object_list %}
       <div class="col-md-4">
         <div class="card">
-          <img class="card-img-top no-border w-50 mx-auto my-auto" style="border: none;" src="media/{{ post.header_image }}" alt="Imagem de capa do card">
-          <div class="card-body">
+          {% if post.header_image %}
+            <img class="card-img-top no-border w-50 mx-auto my-auto" style="border: none;" src="media/{{ post.header_image }}" alt="Imagem de capa do card">
+
+          {% else %}
+            <img class="card-img-top no-border mx-auto my-auto" style="border: none;" src="{% static '/blog/images/default-bg.jpg' %}" alt="Imagem de capa do card">
+          {% endif %}
+            <div class="card-body">
             <h5 class="card-title">{{ post.title|upper }} .... </h5>
             <p class="card-text">{{ post.body|slice:":90"|safe }}...</p>
             <p class="card-text"><small class="text-muted">Criado em {{ post.post_date|date:"d/M/Y"  }}</small></p>

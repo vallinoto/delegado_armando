@@ -1,11 +1,18 @@
 {% extends 'base.html'%}
+{% load static %}
 
 {% block title %} {{ post.title_tag }} {% endblock%}
 
 {% block content %}
 
 <h1>{{ post.title }}</h1>
-<small>By: {{ post.author.first_name }} {{post.author.last_name }} </small><br>
+{% if post.author.profile.profile_pic %}
+    <img src="{{ post.author.profile.profile_pic.url }}">
+
+{% else %}
+    <img src="{% static '/blog/images/default-profile-pic.png' %}">
+{% endif %}
+    <small>By: {{ post.author.first_name }} {{ post.author.last_name }}, {{ post.author.profile.degree }} </small><br>
 <br>
 <hr>
 <br>
